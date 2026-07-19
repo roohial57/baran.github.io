@@ -1,40 +1,34 @@
 # Roohallah Alizadeh — Developer Portfolio
 
-## Open now (working)
+## Live URL (for Google)
 
-**https://cdn.jsdelivr.net/gh/roohial57/baran.github.io@main/index.html**
+**https://roohial57.github.io/baran.github.io/**
 
-GitHub Pages is published from `main`, but custom domains block the normal URLs right now:
+> First make sure this URL opens (remove broken `ekeepy.ir` CNAME from `roohial57.github.io` if it still redirects to Cloudflare 522).
 
-| Domain | Problem |
-|--------|---------|
-| `baran288.ir` | DNS A/AAAA → `127.0.0.1` / `::1` |
-| `ekeepy.ir` | Cloudflare **522/523** (origin unreachable); user site redirects project pages here |
+## Get indexed on Google
 
-After DNS/Cloudflare are fixed, these should work:
+1. Fix the public URL so it loads without error (see above).
+2. Open [Google Search Console](https://search.google.com/search-console)
+3. Add property: `https://roohial57.github.io/baran.github.io/`
+4. Verify ownership (HTML tag or GitHub association)
+5. Submit sitemap: `https://roohial57.github.io/baran.github.io/sitemap-index.xml`
+6. Use **URL Inspection → Request indexing** for the homepage
 
-- https://roohial57.github.io/baran.github.io/
-- https://ekeepy.ir/baran.github.io/
+Indexing is not instant — often days to a couple of weeks.
 
-### Fix DNS later
+## SEO included
 
-GitHub Pages IPs:
-
-```
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-```
-
-For Cloudflare domains, use **DNS only** (grey cloud), not proxied.
+- `robots.txt`, sitemap
+- Canonical + Open Graph meta
+- JSON-LD `Person` schema
 
 ## Customize
 
 ```bash
 npm install
-npm run dev          # local preview
-npm run build:pages  # rebuild root index.html + _astro for Pages
+npm run dev
+npm run build:pages
 ```
 
-Edit content in `src/config.ts`.
+Edit `src/config.ts`.

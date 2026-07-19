@@ -8,32 +8,71 @@ import Education from "../components/Education.astro";
 import Footer from "../components/Footer.astro";
 import { siteConfig } from "../config";
 import "../styles/global.css";
+
+const pageTitle = `${siteConfig.name} | ${siteConfig.title}`;
+const canonical = siteConfig.url;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  jobTitle: siteConfig.title,
+  description: siteConfig.description,
+  email: siteConfig.social.email,
+  sameAs: [
+    siteConfig.social.github,
+    siteConfig.social.linkedin,
+  ].filter(Boolean),
+  knowsAbout: siteConfig.skills,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Tehran",
+    addressCountry: "IR",
+  },
+};
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
     <meta name="description" content={siteConfig.description} />
+    <meta name="author" content={siteConfig.name} />
+    <meta name="keywords" content={siteConfig.keywords.join(", ")} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteConfig.name} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={siteConfig.description} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
     />
-    <title>{siteConfig.name} - {siteConfig.title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <Header />
-    <section>
+    <main>
       <Hero />
       <About />
       <Projects />
       <Experience />
       <Education />
-    </section>
+    </main>
     <Footer />
   </body>
 </html>

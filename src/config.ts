@@ -2,8 +2,20 @@ export const siteConfig = {
   name: "Roohallah Alizadeh",
   title: ".NET Developer",
   description:
-    "Portfolio of Roohallah Alizadeh — .NET developer building backend systems, EF Core tools, and clean architecture.",
+    "Roohallah Alizadeh — .NET developer in Tehran. ASP.NET Core, Entity Framework Core, SQL Server, clean architecture, and open-source tooling like EFCommenter.",
+  url: "https://roohial57.github.io/baran.github.io/",
   accentColor: "#0F766E",
+  keywords: [
+    "Roohallah Alizadeh",
+    ".NET Developer",
+    "ASP.NET Core",
+    "Entity Framework Core",
+    "C#",
+    "EFCommenter",
+    "Clean Architecture",
+    "SQL Server",
+    "Tehran",
+  ],
   social: {
     email: "roohial57@gmail.com",
     linkedin: "https://www.linkedin.com/in/roohallah-alizadeh-76747a1a9",
