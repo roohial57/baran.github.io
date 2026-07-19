@@ -1,24 +1,18 @@
 {
-  "liveServer.settings.root": "/",
-  "liveServer.settings.file": "/index.html",
-  "liveServer.settings.CustomBrowser": "chrome",
-  "liveServer.settings.NoBrowser": false,
+  "liveServer.settings.root": "/website",
+  "liveServer.settings.file": "/website/index.html",
   "liveServer.settings.port": 5500,
   "files.exclude": {
     "**/node_modules": true,
     "**/.astro": true,
-    "**/dist": true
-  },
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/dist": true
+    "**/dist": true,
+    "**/src": true,
+    "**/profile-site": true,
+    "**/preview": true,
+    "**/open": true
   },
   "javascript.validate.enable": false,
   "typescript.validate.enable": false,
   "html.validate.scripts": false,
-  "css.validate": false,
-  "files.associations": {
-    "portfolio.html": "html",
-    "index.html": "html"
-  }
+  "css.validate": false
 }
