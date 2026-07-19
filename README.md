@@ -1,30 +1,40 @@
 # Roohallah Alizadeh — Developer Portfolio
 
-Personal portfolio built with [DevPortfolio](https://github.com/RyanFitzgerald/devportfolio) (Astro + Tailwind).
+## Open now (working)
 
-## Live
+**https://cdn.jsdelivr.net/gh/roohial57/baran.github.io@main/index.html**
 
-**https://roohial57.github.io/baran.github.io/**
+GitHub Pages is published from `main`, but custom domains block the normal URLs right now:
 
-> Note: `baran288.ir` currently has DNS A/AAAA records pointing to `127.0.0.1` / `::1`, so that custom domain cannot work until you fix DNS at your registrar to GitHub Pages IPs (`185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`). The CNAME was removed so GitHub Pages does not redirect away from the working `github.io` URL.
+| Domain | Problem |
+|--------|---------|
+| `baran288.ir` | DNS A/AAAA → `127.0.0.1` / `::1` |
+| `ekeepy.ir` | Cloudflare **522/523** (origin unreachable); user site redirects project pages here |
+
+After DNS/Cloudflare are fixed, these should work:
+
+- https://roohial57.github.io/baran.github.io/
+- https://ekeepy.ir/baran.github.io/
+
+### Fix DNS later
+
+GitHub Pages IPs:
+
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+For Cloudflare domains, use **DNS only** (grey cloud), not proxied.
 
 ## Customize
 
-Edit `src/config.ts`, then rebuild:
-
 ```bash
 npm install
-npm run build:pages
+npm run dev          # local preview
+npm run build:pages  # rebuild root index.html + _astro for Pages
 ```
 
-## Develop
-
-```bash
-npm install
-npm run dev
-```
-
-## GitHub Pages
-
-Repo Pages is set to deploy from `main` branch path `/`.  
-`npm run build:pages` writes `index.html`, `_astro/`, `favicon.svg`, and `.nojekyll` to the repo root for that legacy Pages setup.
+Edit content in `src/config.ts`.
