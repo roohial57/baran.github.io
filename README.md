@@ -1,16 +1,12 @@
 # Developer Portfolio — Roohallah Alizadeh
 
-Source for your GitHub profile website.
+Dark cyan portfolio inspired by modern developer landing pages.
 
-## Link to put on GitHub
-
-After you publish once:
+## Profile link
 
 **https://roohial57.github.io/**
 
-GitHub → profile → **Website** / **Edit profile** → paste that URL.
-
-## Publish (run on your computer)
+## Publish to GitHub profile
 
 ```bash
 git clone https://github.com/roohial57/baran.github.io.git
@@ -19,12 +15,9 @@ npm install
 npm run publish:profile
 ```
 
-That script:
-1. Builds the portfolio
-2. Pushes it to `roohial57.github.io`
-3. Removes broken `CNAME` so `github.io` works
+Then set Website on your GitHub profile to `https://roohial57.github.io/`
 
-## Local preview
+## Local
 
 ```bash
 npm install
