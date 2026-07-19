@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://roohial57.github.io/baran.github.io/sitemap-index.xml
