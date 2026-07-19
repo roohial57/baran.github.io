@@ -1,17 +1,13 @@
-# build output
-dist/
-# generated types
-.astro/
-
-# dependencies
+# dependencies & tooling
 node_modules/
+.astro/
+dist/
 
 # logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
-
 
 # environment variables
 .env
