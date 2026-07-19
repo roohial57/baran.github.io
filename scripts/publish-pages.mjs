@@ -5,6 +5,7 @@ import {
   existsSync,
   readdirSync,
   unlinkSync,
+  readFileSync,
 } from "node:fs";
 import { join } from "node:path";
 
@@ -29,16 +30,26 @@ for (const name of [
   try {
     unlinkSync(join(root, name));
   } catch {
-    // ignore missing
+    // ignore
   }
 }
 
 for (const name of readdirSync(dist)) {
-  const from = join(dist, name);
-  const to = join(root, name);
-  cpSync(from, to, { recursive: true });
+  cpSync(join(dist, name), join(root, name), { recursive: true });
 }
 writeFileSync(join(root, ".nojekyll"), "");
 
-console.log("Published site artifacts to repo root:");
-console.log(readdirSync(root).filter((n) => !n.startsWith(".") || n === ".nojekyll").join(", "));
+// Astro base "./" emits "/./..." — rewrite to real relative URLs
+let html = readFileSync(join(root, "index.html"), "utf8");
+html = html
+  .replaceAll('href="/./', 'href="./')
+  .replaceAll('src="/./', 'src="./')
+  .replaceAll("url(/./", "url(./")
+  .replaceAll('href="/baran.github.io/', 'href="./')
+  .replaceAll('src="/baran.github.io/', 'src="./');
+writeFileSync(join(root, "index.html"), html);
+
+console.log("Published with relative assets:");
+for (const m of html.matchAll(/href="([^"]+(?:favicon|_astro)[^"]*)"/g)) {
+  console.log(" ", m[1]);
+}

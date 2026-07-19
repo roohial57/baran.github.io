@@ -3,11 +3,16 @@ import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
-// Canonical public URL for Google indexing (project Pages).
+// site = canonical host for sitemap/SEO
+// base = ./ so CSS/JS resolve on github.io, custom domains, and CDN mirrors
 export default defineConfig({
   site: "https://roohial57.github.io",
-  base: "/baran.github.io/",
-  integrations: [sitemap()],
+  base: "./",
+  integrations: [
+    sitemap({
+      customPages: ["https://roohial57.github.io/baran.github.io/"],
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },
