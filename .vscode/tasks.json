@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Open Portfolio (no npm)",
+      "type": "shell",
+      "command": "start index.html",
+      "windows": {
+        "command": "start index.html"
+      },
+      "linux": {
+        "command": "xdg-open index.html"
+      },
+      "osx": {
+        "command": "open index.html"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never"
+      }
+    }
+  ]
+}
