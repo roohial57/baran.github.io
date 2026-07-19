@@ -1,13 +1,13 @@
-# Developer Portfolio — Roohallah Alizadeh
+# سایت پورتفolio (لوکال)
 
-## Open in VS Code (no npm)
+پوشه مهم: **`website/`**
 
-1. Download ZIP: https://github.com/roohial57/baran.github.io/archive/refs/heads/main.zip
-2. VS Code → Open Folder
-3. Open `index.html` → right-click → **Open with Live Server**
+مثل یک سایت عادی است — HTML + CSS + JS  
+بدون GitHub، بدون npm، بدون بیلد.
 
-See `VSCODE.md` for details.
+## تو VS Code
 
-## Browser preview
+1. Open Folder → پوشه `website`
+2. `index.html` → راست‌کلیک → **Open with Live Server**
 
-https://htmlpreview.github.io/?https://raw.githubusercontent.com/roohial57/baran.github.io/main/index.html
+تمام.
