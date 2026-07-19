@@ -1,16 +1,32 @@
-# Roohallah Alizadeh — Developer Portfolio
+# Developer Portfolio — Roohallah Alizadeh
 
-## Working preview
+Source for your GitHub profile website.
 
-https://cdn.jsdelivr.net/gh/roohial57/baran.github.io@main/index.html
+## Link to put on GitHub
 
-## GitHub Pages URL (after domain redirects are fixed)
+After you publish once:
 
-https://roohial57.github.io/baran.github.io/
+**https://roohial57.github.io/**
 
-## Develop
+GitHub → profile → **Website** / **Edit profile** → paste that URL.
+
+## Publish (run on your computer)
+
+```bash
+git clone https://github.com/roohial57/baran.github.io.git
+cd baran.github.io
+npm install
+npm run publish:profile
+```
+
+That script:
+1. Builds the portfolio
+2. Pushes it to `roohial57.github.io`
+3. Removes broken `CNAME` so `github.io` works
+
+## Local preview
 
 ```bash
 npm install
-npm run build:pages
+npm run dev
 ```

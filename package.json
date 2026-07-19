@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "build:pages": "astro build && node scripts/publish-pages.mjs",
+    "publish:profile": "bash scripts/publish-to-github-profile.sh",
     "preview": "astro preview",
     "astro": "astro"
   },
