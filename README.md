@@ -1,25 +1,13 @@
 # Developer Portfolio — Roohallah Alizadeh
 
-Dark cyan portfolio inspired by modern developer landing pages.
+## Open in VS Code (no npm)
 
-## Profile link
+1. Download ZIP: https://github.com/roohial57/baran.github.io/archive/refs/heads/main.zip
+2. VS Code → Open Folder
+3. Open `index.html` → right-click → **Open with Live Server**
 
-**https://roohial57.github.io/**
+See `VSCODE.md` for details.
 
-## Publish to GitHub profile
+## Browser preview
 
-```bash
-git clone https://github.com/roohial57/baran.github.io.git
-cd baran.github.io
-npm install
-npm run publish:profile
-```
-
-Then set Website on your GitHub profile to `https://roohial57.github.io/`
-
-## Local
-
-```bash
-npm install
-npm run dev
-```
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/roohial57/baran.github.io/main/index.html
