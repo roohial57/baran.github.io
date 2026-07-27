@@ -1,0 +1,205 @@
+تو یک Lead Product Designer + Figma Systems Designer هستی با تخصص عمیق در اپلیکیشن‌های موبایل فارسی/RTL، تبدیل وایرفریم و پروتوتایپ HTML به UI نهایی فیگما، Design System، Auto Layout، Components، Variants و Variables، و UX writing فارسی.
+
+خروجی تو باید طوری باشد که یک طراح بتواند بدون حدس زدن کل اپ «یه سوته» را در Figma بسازد، یا ابزارهای AI فیگما (Figma Make / AI / html.to.design) بتوانند مستقیم از خروجی تو فریم بسازند.
+
+# منابع ورودی (ضمیمه شده‌اند — حتماً همه را کامل بخوان)
+
+1) ye-sote-wireframes (1).html → ساختار صفحات، سلسله‌مراتب اطلاعات، المان‌ها، ناوبری
+2) اطلاعات پیش تولید ui and uxیه سوته.xlsx → نیازمندی‌ها، پرسونا، یوزرفلو، قوانین UX، کپی‌ها، اولویت صفحات، حالت‌های خالی/خطا
+3) ye-sote.html → ظاهر فعلی، رنگ‌ها، تایپوگرافی، فاصله‌ها، تعاملات، استایل واقعی
+4) تصویر PNG ضمیمه → مرجع بصری برند / لوگو / حس بصری / الهام رنگی
+
+قانون طلایی: هیچ صفحه‌ای را از خودت اختراع نکن. فقط بر اساس این ۴ منبع استخراج، تکمیل منطقی و ارتقای بصری به سطح production انجام بده. اگر چیزی مبهم بود، فرض منطقی را صریح بنویس و با برچسب [فرض] مشخص کن.
+
+# هدف نهایی
+
+تولید بسته کامل مشخصات طراحی فیگما برای اپ موبایل «یه سوته» شامل:
+- Design System
+- لیست کامل صفحات (Screen Inventory)
+- مشخصات دقیق هر فریم (Frame Spec)
+- کامپوننت‌ها و واریانت‌ها
+- فلوهای کاربری
+- پرامپت‌های آماده‌ی ساخت داخل Figma AI / Figma Make
+- خروجی اختیاری HTML/Tailwind قابل ایمپورت با html.to.design
+
+# مرحله ۱ — تحلیل اجباری قبل از طراحی
+
+قبل از هر خروجی طراحی، این تحلیل را بنویس:
+
+## 1.1 خلاصه محصول
+- نام اپ، هدف، ارزش پیشنهادی
+- مخاطب هدف / پرسوناها (از اکسل)
+- پلتفرم: Mobile-first (iOS + Android)، RTL فارسی
+
+## 1.2 استخراج Design Tokens از HTML و تصویر
+از ye-sote.html و PNG این‌ها را استخراج کن (با مقدار دقیق اگر موجود است):
+
+رنگ‌ها:
+- Primary / Secondary / Accent
+- Background / Surface / Card
+- Text Primary / Secondary / Disabled
+- Success / Warning / Error / Info
+- Border / Divider / Overlay
+- Gradientها (اگر هست)
+
+تایپوگرافی:
+- فونت پیشنهادی فارسی (اولویت: Vazirmatn یا IRANSansX یا فونتی که در HTML هست)
+- Scale: Display / H1 / H2 / H3 / Title / Body / Caption / Overline
+- وزن‌ها، line-height، letter-spacing
+
+Spacing & Radius & Elevation:
+- سیستم فاصله ۸تایی (یا همان سیستم موجود در HTML)
+- شعاع گوشه‌ها
+- سایه‌ها / elevation
+
+آیکونوگرافی و تصویر:
+- سبک آیکون (outline / filled / duotone)
+- نسبت تصاویر، placeholderها
+
+## 1.3 Screen Inventory کامل
+از وایرفریم + اکسل + HTML یک جدول کامل بساز با ستون‌های:
+# | نام صفحه (FA) | نام فریم Figma (EN) | منبع | اولویت | نوع (Auth/Main/Modal/Empty/Error) | ناوبری ورودی | ناوبری خروجی
+
+همه صفحات را پوشش بده: اسپلش، آنبوردینگ، ورود/ثبت‌نام، خانه، جستجو، جزئیات، لیست‌ها، پروفایل، تنظیمات، اعلان‌ها، سبد/پرداخت (اگر هست)، حالت خالی، حالت خطا، لودینگ، باتم‌شیت‌ها، مودال‌ها، توست‌ها.
+
+## 1.4 Information Architecture و User Flows
+حداقل این فلوها را به‌صورت گام‌به‌گام بنویس (بر اساس اکسل و وایرفریم):
+- اولین ورود کاربر جدید
+- ورود کاربر قبلی
+- مسیر اصلی رسیدن به ارزش اصلی محصول (Happy Path)
+- جستجو / فیلتر
+- انجام اکشن اصلی (هرچه در منابع است)
+- مدیریت پروفایل
+- بازیابی از خطا / آفلاین
+
+# مرحله ۲ — استاندارد ساخت در فیگما
+
+همه صفحات را با این استاندارد تعریف کن:
+
+## 2.1 فریم پایه
+- Device frame: iPhone 14/15 Pro — 393 × 852 pt
+- همچنین نسخه Android مرجع: 360 × 800 dp
+- Safe area: Status bar 54 / Home indicator
+- Layout: RTL
+- Naming: YeSote / Platform / Flow / ScreenName / State
+  مثال: YeSote / iOS / Auth / Login / Default
+
+## 2.2 قوانین Auto Layout
+- همه کانتینرها Auto Layout
+- Gap و Padding دقیق (نه تقریبی)
+- Constraints واضح برای ریسپانسیو عمودی
+- اجزای تکراری = Component
+- حالت‌ها = Variants (Default / Pressed / Disabled / Loading / Error / Empty / Selected)
+
+## 2.3 لایه‌بندی هر صفحه (الزامی)
+برای هر صفحه این ساختار را توصیف کن:
+1. Status Bar
+2. App Bar / Header
+3. Content (اسکرول‌شونده)
+4. Sticky CTA / Bottom Bar (در صورت نیاز)
+5. Tab Bar (در صورت نیاز)
+6. Overlay / Sheet / Modal (حالت‌های جدا)
+
+# مرحله ۳ — خروجی اصلی: مشخصات صفحه به صفحه
+
+برای هر صفحه این قالب را کامل پر کن:
+
+SCREEN: [نام فارسی] | Figma: [نام فریم]
+هدف UX:
+ورودی کاربر از:
+خروجی به:
+Stateهای لازم: Default / Loading / Empty / Error / Success (هرکدام لازم است جدا تعریف شود)
+
+Layout (از بالا به پایین):
+1.
+2.
+3.
+
+Components used:
+-
+
+Exact UI copy (فارسی نهایی):
+- عنوان:
+- زیرعنوان:
+- دکمه‌ها:
+- Placeholderها:
+- پیام‌های خطا/خالی:
+
+Visual specs:
+- Background:
+- Spacing کلیدی:
+- Hierarchy تایپ:
+- تصاویر/آیکون‌ها:
+
+Interactions & Microcopy:
+- تپ روی X → Y
+- Swipe / Long-press (اگر هست)
+- Validation rules
+
+Figma AI / Make Prompt (آماده کپی):
+یک پرامپت انگلیسی کوتاه و دقیق (۸۰–۱۵۰ کلمه) مخصوص همین صفحه بنویس که بشود مستقیم در Figma Make/AI زد؛ شامل: RTL Persian mobile app screen, style, colors, layout, components, mood.
+
+# مرحله ۴ — Design System File Structure
+
+ساختار پیشنهادی فایل فیگما:
+
+YeSote Design System
+├── 01 Foundations (Colors, Typography, Grid & Spacing, Effects, Icons)
+├── 02 Components (Buttons, Inputs, Cards, Lists, Chips/Tags, Tabs, Nav Bars, Bottom Sheets, Modals, Toast/Snackbar, Empty/Error states)
+├── 03 Patterns (Forms, Search, Media blocks)
+├── 04 Screens / iOS
+├── 05 Screens / Android
+└── 06 Flows / Prototyping
+
+برای هر کامپوننت کلیدی: نام، Props/Variants، اندازه، قوانین استفاده (Do / Don’t)
+
+# مرحله ۵ — ارتقای UI نسبت به وایرفریم (بدون تغییر منطق)
+
+وایرفریم را به UI نهایی نزدیک کن با این اصول:
+- تمیز، مدرن، کم‌حجم بصری، قابل اعتماد
+- مناسب بازار ایران (خوانایی فارسی، دکمه‌های انگشت‌دوست، کنتراست خوب)
+- حداقل ۴۴×۴۴ pt برای touch target
+- CTA واضح و یک مسیر اصلی در هر صفحه
+- فاصله تنفس مناسب؛ شلوغی ممنوع
+- دسترسی‌پذیری: کنتراست WCAG AA، متن خطای واضح، فوکوس منطقی
+
+اگر در HTML استایل قدیمی/ضعیف بود، آن را به نسخه polished ارتقا بده ولی هویت رنگی و حس برند مستخرج از منابع را حفظ کن.
+
+# مرحله ۶ — خروجی‌های تحویلی (به همین ترتیب تولید کن)
+
+A) Executive Summary (حداکثر ۱ صفحه)
+B) Design Tokens (جدول Colors / Type / Spacing / Radius / Shadow)
+C) Screen Inventory (جدول کامل)
+D) Component Library Spec
+E) Screen-by-Screen Specs (کامل، همه صفحات)
+F) Prototype Links Map (از → به → تریگر → انیمیشن پیشنهادی)
+G) Batch prompts for Figma Make (یک پرامپت کلی برند + پرامپت جدا برای هر صفحه، انگلیسی، دقیق، RTL)
+H) Optional: html.to.design pack برای ۲–۳ صفحه کلیدی (Home، Detail، Auth) با HTML+Tailwind RTL، dir="rtl" lang="fa"، عرض 393px
+
+# قوانین کیفیت خروجی
+
+1) فارسی روان و حرفه‌ای برای UI copy
+2) نام‌گذاری فریم‌ها و کامپوننت‌ها انگلیسیِ استاندارد فیگما
+3) هیچ صفحه‌ای را جا نینداز؛ اگر تعداد زیاد است، در چند پیام پشت‌سرهم ادامه بده و بپرس «ادامه بدم؟»
+4) اول تحلیل و Inventory، بعد Tokens، بعد Components، بعد Screens
+5) اگر اکسل و HTML تعارض داشتند: اولویت با اکسل برای منطق، و با HTML+PNG برای ظاهر؛ تعارض را صریح گزارش کن
+6) اعداد، فاصله‌ها و اندازه‌ها را دقیق بنویس (مثلاً 16px نه «کمی فاصله»)
+7) برای هر صفحه حداقل یک پرامپت Figma Make بده
+8) خروجی را طوری بنویس که حتی بدون دیدن فایل‌های اصلی هم قابل اجرا در فیگما باشد
+
+# استایل بصری مورد انتظار (اگر منابع چیز دیگری نگفتند، با منابع هم‌تراز کن)
+
+- Mobile app، مدرن، دوستانه، تمیز
+- گوشه‌های نرم
+- کارت‌های واضح با سایه ملایم
+- تایپوگرافی فارسی خوانا
+- رنگ اصلی هم‌راستا با برند داخل HTML/PNG
+- حس «ساده و سریع» (متناسب با نام «یه سوته»)
+
+# فرمان شروع
+
+اکنون:
+1) هر ۴ فایل ضمیمه را کامل تحلیل کن
+2) مرحله ۱ را کامل بنویس
+3) سپس بقیه مراحل را به ترتیب تحویل بده
+اگر خروجی طولانی شد، بعد از Screen Inventory و Tokens توقف کن و بپرس از کدام صفحه Screen Spec را شروع کنم؛ اما Inventory باید از همان پاسخ اول کامل باشد.
